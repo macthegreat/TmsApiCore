@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Scalar.AspNetCore;
+using Microsoft.EntityFrameworkCore;
+using TmsApi.Data;
 
 
 
@@ -34,6 +36,9 @@ builder.Host.UseDefaultServiceProvider(options =>
 
 builder.Services.AddOptions<paymentOptions>().BindConfiguration("payments").ValidateDataAnnotations().ValidateOnStart();
  builder.Services.AddProblemDetails();
+
+ builder.Services.AddDbContext<TmsDbContext>(options =>
+options.UseNpgsql(builder.Configuration.GetConnectionString("TmsDatabase")));
 
 var app = builder.Build();
 

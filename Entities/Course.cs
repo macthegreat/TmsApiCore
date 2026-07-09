@@ -1,0 +1,15 @@
+namespace TmsApi.Entities;
+
+public class Course
+{
+   public int Id { get; set; } // primary key
+    public required string Title { get; set; }
+    public required string Code { get; set; }
+    public int Capacity { get; set; }
+
+    // Navigation properties
+    public ICollection<Assessment> Assessments { get; set; } = new List<Assessment>();
+    
+    public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+    
+}

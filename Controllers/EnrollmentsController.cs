@@ -34,6 +34,6 @@ public class EnrollmentsController(IEnrollmentService enrollmentService) : Contr
     }
     public record CreateEnrollmentRequest(string StudentId, string CourseCode);
 
-    public class TmsDatabaseException(string message) : Exception(message);
+    
 
 }

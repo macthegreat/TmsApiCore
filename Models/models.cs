@@ -7,6 +7,7 @@ public record EnrollmentRecord(
 //add course class
 public class Course
 {
+    public int Id { get; init; }
     public required string Code { get; init; }
 
     public required string Title
@@ -38,7 +39,9 @@ public class Course
 // add student class
 public class Student
 {
-    public required string Id { get; init; }
+    public int Id { get; init; } 
+
+    public string RegistrationNumber { get; set; } = null!;
 
     public required string Name
     {
@@ -72,6 +75,8 @@ public class Student
                 "GPA must be between 0.0 and 4.0."
             );
     }
+
+     public bool IsActive { get; set; }
 }
 
 // adding interface for gradable items
@@ -118,4 +123,5 @@ public class LabAssignment : IGradable
         return (FunctionalityScore * 0.7m)
              + (CodeQualityScore * 0.3m);
     }
+
 }
